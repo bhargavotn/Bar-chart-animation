@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bar Chart Animation</title>
+    <style>
+        /* CSS styles */
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #chart-container {
+            width: 800px; /* Increased width to 800px */
+            height: 200px; /* Decreased height to 200px */
+            border: 1px solid #ccc;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            margin-bottom: 20px;
+            background-color: black;
+            padding: 20px;
+        }
+
+        .bar {
+            width: 50%;
+            position: relative;
+            margin: 0 auto;
+            transition: height 0.5s ease-in-out;
+            background-color: black;
+        }
+
+        .bar1 { background-color: purple; }
+        .bar2 { background-color: pink; }
+        .bar3 { background-color: brown; }
+        .bar4 { background-color: orange; }
+        .bar5 { background-color: yellow; }
+
+        #controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .start-button, .reset-button, .stop-button {
+            background-color: white;
+            color: white;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 0; /* Changed border-radius to 0 */
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .start-button {
+            background-color: green;
+            margin-right: 150px;
+        }
+
+        .reset-button {
+            background-color: purple;
+        }
+
+        .stop-button {
+            background-color: red;
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart-container">
+        <div class="bar bar1"></div>
+        <div class="bar bar2"></div>
+        <div class="bar bar3"></div>
+        <div class="bar bar4"></div>
+        <div class="bar bar5"></div>
+    </div>
+
+    <div id="controls">
+        <button class="start-button" onclick="startAnimation()">Start</button>
+        <button class="reset-button" onclick="resetAnimation()">Reset</button>
+        <button class="stop-button" onclick="stopAnimation()">Stop</button>
+    </div>
+
+    <script>
+        var bars = document.getElementsByClassName('bar');
+        var animationInterval;
+
+        function startAnimation() {
+            var maxHeight = 200; // Maximum height for the bars
+            var heights = [100, 150, 200, 120, 250];
+
+            animationInterval = setInterval(function() {
+                for (var i = 0; i < bars.length; i++) {
+                    var randomHeight = Math.floor(Math.random() * maxHeight); // Generate random height within the maximum limit
+                    bars[i].style.height = randomHeight + 'px';
+                }
+            }, 1000);
+        }
+
+        function resetAnimation() {
+            clearInterval(animationInterval);
+            for (var i = 0; i < bars.length; i++) {
+                bars[i].style.height = '100%';
+            }
+        }
+
+        function stopAnimation() {
+            clearInterval(animationInterval);
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
